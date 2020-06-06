@@ -1,2 +1,2 @@
 # react-menu
-react menu project
+React menu project 
