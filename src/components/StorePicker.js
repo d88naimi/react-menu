@@ -15,9 +15,9 @@ class StorePicker extends React.Component {
       };
     render() {
         return (
-        <React.Fragment> {/* NO adjacent jsx selector, React fragment allows for multiple elements in jsx */}
+        <React.Fragment>
             <p> Form</p>
-            <form className="store-selector" onSubmit={this.gotToStore}>
+            <form className="store-selector" onSubmit={this.goToStore}>
                 <h2>Please Enter A Store</h2>
                 <input type="text" 
                 ref={this.myInput}
