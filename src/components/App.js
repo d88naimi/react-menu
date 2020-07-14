@@ -14,11 +14,11 @@ class App extends React.Component {
 
     componentDidMount() {
         const { params } = this.props.match;
-        
+
         const localStorageRef = localStorage.getItem(params.storeId);
         if (localStorageRef) {
             this.setState({ order: JSON.parse(localStorageRef) });
-          }
+        }
         this.ref = base.syncState(`${params.storeId}/fishes`, {
             context: this,
             state: "fishes"
@@ -52,8 +52,16 @@ class App extends React.Component {
         // update that state
         fishes[key] = updatedFish;
         // set that to state
-        this.setState({fishes});
+        this.setState({ fishes });
 
+    }
+    deleteFish = (key) => {
+        // take a copy of state 
+        const fishes = { ... this.state.fishes };
+        // update the state
+        fishes[key] = null;
+        // update state
+        this.setState({fishes});
     }
 
     loadSampleFishes = () => {
@@ -87,9 +95,10 @@ class App extends React.Component {
                 <Inventory
                     addFish={this.addFish}
                     updateFish={this.updateFish}
-                    loadSampleFishes={this.loadSampleFishes} 
-                     fishes= {this.state.fishes}   
-                    />
+                    deleteFish={this.deleteFish}
+                    loadSampleFishes={this.loadSampleFishes}
+                    fishes={this.state.fishes}
+                />
             </div>
         )
     }
