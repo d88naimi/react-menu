@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
@@ -11,6 +12,10 @@ class App extends React.Component {
         fishes: {},
         order: {}
     };
+    static propTypes = {
+        match: PropTypes.object
+    }
+ 
 
     componentDidMount() {
         const { params } = this.props.match;
@@ -61,7 +66,7 @@ class App extends React.Component {
         // update the state
         fishes[key] = null;
         // update state
-        this.setState({fishes});
+        this.setState({ fishes });
     }
 
     loadSampleFishes = () => {
@@ -73,6 +78,15 @@ class App extends React.Component {
         const order = { ...this.state.order };
         // either add to the order or update the order
         order[key] = order[key] + 1 || 1;
+        // Call the set state to update pur state object
+        this.setState({ order });
+    }
+
+    removeFromOrder = (key) => {
+        // take a copy of state
+        const order = { ...this.state.order };
+        // remove that item from order
+        delete order[key];
         // Call the set state to update pur state object
         this.setState({ order });
     }
@@ -91,7 +105,12 @@ class App extends React.Component {
                     </ul>
                 </div>
 
-                <Order fishes={this.state.fishes} order={this.state.order} />
+                <Order
+                    fishes={this.state.fishes}
+                    order={this.state.order}
+                    removeFromOrder={this.removeFromOrder}
+
+                />
                 <Inventory
                     addFish={this.addFish}
                     updateFish={this.updateFish}
