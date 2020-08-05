@@ -4,6 +4,10 @@
 
 Order some fresh seafood from a set inventory from this React app
 
+## Link
+
+🐟[Link to App!](https://react-restaurant.d88naimi.vercel.app/)🐠
+
 ### Technologies Used
 
 - HTML
@@ -14,7 +18,6 @@ Order some fresh seafood from a set inventory from this React app
 
 ![App ScreenShot](public/images/cothd.png)
 
-## Link
+## Credit
 
-🐙🐟🐠
-[Link to App!](https://react-restaurant.d88naimi.vercel.app/)
+[Wes Bos React for Beginners](https://reactforbeginners.com/)
